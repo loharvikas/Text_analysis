@@ -15,8 +15,8 @@ Then open http://localhost:8000 to see your app.
 
 # Text Analysis
 
-It uses **spacy** python library to analyze our data.
-
+It uses **Spacy** python library to analyze our data.
+https://spacy.io/
 ### API ENDPOINT
 
 http://localhost:8000/analyze-text/
