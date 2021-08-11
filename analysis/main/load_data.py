@@ -9,6 +9,9 @@ words = [w for w in list(set(w for w in dict_wn.words())) if ('_' not in w)]
 
 
 def preload_data():
+    """
+        This will pre load all synonyms and lemmas.
+    """
     get_synonyms()
     get_lemmas()
 
@@ -19,8 +22,6 @@ def get_synonyms():
     all_synonyms = {'nouns': {}, 'verbs': {}, 'adjectives': {}, 'adverbs': {}}
     pos_map = {'nouns': ['n'], 'adjectives': ['a', 's'], 'verbs': ['v'], 'adverbs': ['r']}
     for idx, word in enumerate(words):
-        if idx%10 == 0:
-            break
         for pos in pos_map.keys():
             synonyms = []
             definition = ""
@@ -42,8 +43,6 @@ def get_lemmas():
     print('starting to look for base lemmas...')
     base_lemmas = {}
     for idx, word in enumerate(words):
-        if idx % 10 == 0:
-            break
         if word not in base_lemmas.keys():
             related_lemmas = []
             stack = [lemma for lemma in dict_wn.lemmas(word)]

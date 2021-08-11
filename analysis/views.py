@@ -8,17 +8,15 @@ from .main.text_analysis import analyze_text
 
 @csrf_exempt
 def text_analysis(request):
-    print("CCC")
+    """
+        API ENDPOINT: /api/analyze-text/
+    """
     if request.method == "POST":
         print("RES:", request.POST)
         content = request.body
-        print("CONTENT:", content)
         content = content.decode()
         if content is list:
-            print("LIST")
             content = content[0]
-        print("TYPE:",type(content))
-        print("content", content)
 
         data, metrics = analyze_text(content)
         response = {

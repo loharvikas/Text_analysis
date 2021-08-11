@@ -4,7 +4,6 @@ from django.conf import settings
 from numpy import std
 from .sentence_analysis import find_sentence_and_types, compute_sentence_metrics
 import re
-from collections import Counter
 
 nltk.download('wordnet')
 dict_wn = nltk.corpus.wordnet
@@ -32,6 +31,9 @@ def is_word(token):
 
 
 def find_synonyms(data, doc, words, word2token_map):
+    """
+        Uses pre load synonyms and lemmas loaded in load_data.py
+    """
     data['lemmas'] = [token.lemma_ if is_word(token) else None for token in doc]
     dict_synonyms = settings.SYNONYMS
     dict_base_lemmas = settings.LEMMAS
